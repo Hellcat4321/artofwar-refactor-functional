@@ -90,7 +90,7 @@ public class GamingProcess {
         Capital capital = new Capital(gameMap, null, player);
         Player newPlayer = player.addGameObject(capital);
 
-        updatePlayer(newPlayer);
+        players = updatePlayer(newPlayer);
         recountPlayerTerritory(gameMap.setGameObject(capital, x, y));
         int cnt = gameMap.createCapitalArea(capital);
         players = updatePlayer(players.get(newPlayer.id).addTerritory(cnt));
@@ -104,8 +104,8 @@ public class GamingProcess {
         }
 
         Player newPlayer = players.get(gameObject.ownerId).addGameObject(gameObject);
-        recountPlayerTerritory(gameMap.setGameObject(gameObject, x, y));
         players = updatePlayer(newPlayer);
+        recountPlayerTerritory(gameMap.setGameObject(gameObject, x, y));
 
         gameMap.recountDefenceCoverage(players);
     }
@@ -167,7 +167,7 @@ public class GamingProcess {
 
         player.refreshUnits();
 
-        updatePlayer(player);
+        players = updatePlayer(player);
         if (!res.getValue()) gameMap.recountDefenceCoverage(players);
 
         insertTurnInfoIntoDB(player, round);
