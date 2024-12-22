@@ -196,9 +196,6 @@ public class GamingProcess {
         }
     }
 
-    public boolean isFirst() {
-        return currentPlayer == 0;
-    }
 
     public boolean isLast() {
         return currentPlayer == turnOrder.size() - 1;
@@ -221,10 +218,6 @@ public class GamingProcess {
             this.players.put(players.get(i).id, players.get(i));
             this.turnOrder.add(players.get(i).id);
         }
-    }
-
-    public GameMap getMap() {
-        return gameMap;
     }
 
     public Map<Integer, Player> getPlayers() {
